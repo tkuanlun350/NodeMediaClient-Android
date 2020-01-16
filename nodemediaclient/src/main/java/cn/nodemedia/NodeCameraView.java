@@ -204,7 +204,7 @@ public class NodeCameraView extends FrameLayout implements GLSurfaceView.Rendere
         } else {
             Log.e("CAMERA", "mCamera WB UnLock");
             parameters.setAutoWhiteBalanceLock(false);
-            parameters.setWhiteBalance(Camera.Parameteres.WHITE_BALANCE_AUTO);
+            parameters.setWhiteBalance(Parameters.WHITE_BALANCE_AUTO);
         }
         mCamera.setParameters(parameters);
         return 0;
