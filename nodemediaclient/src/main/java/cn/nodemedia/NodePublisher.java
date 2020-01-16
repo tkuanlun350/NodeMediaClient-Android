@@ -221,6 +221,20 @@ public class NodePublisher implements NodeCameraView.NodeCameraViewCallback {
         return mNodeCameraView.setFlashEnable(flashEnable);
     }
 
+    public int setWhiteBalanceLock(boolean flag) {
+        if (mNodeCameraView == null) {
+            return -1;
+        }
+        return mNodeCameraView.setWhiteBalanceLock(flag);
+    }
+
+    public int setExposureLock(boolean flag) {
+        if (mNodeCameraView == null) {
+            return -1;
+        }
+        return mNodeCameraView.setExposureLock(flag);
+    }
+
     public int setAutoFocus(boolean autoFocus) {
         if (mNodeCameraView == null) {
             return -1;
