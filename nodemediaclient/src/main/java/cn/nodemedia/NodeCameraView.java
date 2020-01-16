@@ -192,6 +192,44 @@ public class NodeCameraView extends FrameLayout implements GLSurfaceView.Rendere
         }
     }
 
+    public int setWhiteBalanceLock(boolean isWhiteBalanceLock) {
+        if (mCamera == null) {
+            Log.e("CAMERA", "mCamera null");
+            return -1;
+        }
+        Parameters parameters = mCamera.getParameters();
+        if (isWhiteBalanceLock) {
+            Log.e("CAMERA", "mCamera WB Lock");
+            parameters.setAutoWhiteBalanceLock(true);
+        } else {
+            Log.e("CAMERA", "mCamera WB UnLock");
+            parameters.setAutoWhiteBalanceLock(false);
+            parameters.setWhiteBalance(Camera.Parameteres.WHITE_BALANCE_AUTO);
+        }
+        mCamera.setParameters(parameters);
+        return 0;
+    }
+
+    public int setExposureLock(boolean isExposureLock) {
+        if (mCamera == null) {
+            Log.e("CAMERA", "mCamera null");
+            return -1;
+        }
+        Parameters parameters = mCamera.getParameters();
+        if (isExposureLock) {
+            if (parameters.isAutoExposureLockSupported()) {
+                parameters.setExposureCompensation(parameters.getExposureCompensation());
+                parameters.setAutoExposureLock(true);
+            }
+        } else {
+            if (parameters.isAutoExposureLockSupported()) {
+                parameters.setAutoExposureLock(false);
+            }
+        }
+        mCamera.setParameters(parameters);
+        return 0;
+    }
+
     public int setAutoFocus(boolean isAutoFocus) {
         this.isAutoFocus = isAutoFocus;
         if (mCamera == null) {
